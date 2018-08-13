@@ -22,7 +22,9 @@
 
 python -c "from keras import backend"
 KERAS_BACKEND=tensorflow
+IMAGE_DATA_FORMAT=channels_last
 sed -i -e 's/"backend":[[:space:]]*"[^"]*/"backend":\ "'$KERAS_BACKEND'/g' ~/.keras/keras.json;
+sed -i -e 's/"image_data_format":[[:space:]]*"[^"]*/"image_data_format":\ "'IMAGE_DATA_FORMAT'/g' ~/.keras/keras.json;
 echo -e "Running tests with the following config:\n$(cat ~/.keras/keras.json)"
 
 # Use "cpu_config", "gpu_config", "4_gpu_config", and "8_gpu_config" as command line arguments to load the right
